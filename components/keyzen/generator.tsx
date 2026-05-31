@@ -183,7 +183,7 @@ export function Generator() {
       <section className="grid grid-cols-1 gap-12 md:grid-cols-2 md:gap-16">
         <div className="flex flex-col gap-6">
           <div className="flex items-end justify-between">
-            <span className="text-xs uppercase tracking-[0.25em] text-muted-foreground">
+            <span className="uppercase tracking-wide text-muted-foreground">
               Length
             </span>
             <span className="font-mono text-2xl font-medium tabular-nums text-foreground">
@@ -207,7 +207,7 @@ export function Generator() {
         </div>
 
         <div className="flex flex-col gap-3">
-          <span className="mb-1 text-xs uppercase tracking-[0.25em] text-muted-foreground">
+          <span className="mb-1 uppercase tracking-wide text-muted-foreground">
             Characters
           </span>
           <div className="grid grid-cols-2 gap-x-6">
@@ -226,12 +226,12 @@ export function Generator() {
       <button
         type="button"
         onClick={commit}
-        className="group flex w-full items-center justify-between gap-4 rounded-2xl bg-foreground px-6 py-6 text-left text-background transition-all duration-300 hover:bg-accent hover:text-white sm:px-10 sm:py-8"
+        className="group flex w-full cursor-pointer items-center justify-between gap-4 rounded-2xl bg-foreground px-6 py-6 text-left text-background transition-all duration-300 hover:bg-accent hover:text-white sm:px-10 sm:py-8"
       >
         <span className="text-xl font-extrabold tracking-tight sm:text-3xl md:text-4xl">
           GENERATE PASSWORD
         </span>
-        <ArrowRight className="size-6 shrink-0 transition-transform duration-300 group-hover:translate-x-1 sm:size-8" />
+        <ArrowRight className="size-6 shrink-0 transition-transform duration-300 group-hover:translate-x-2 sm:size-8" />
       </button>
 
       <HistoryModal

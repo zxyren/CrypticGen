@@ -49,7 +49,7 @@ export function PasswordDisplay({
       {/* Toolbar */}
       <div className="mb-4 flex flex-wrap items-center justify-between gap-y-2">
         <div className="flex items-center gap-3">
-          <span className="text-xs uppercase tracking-wider text-muted-foreground">
+          <span className="mb-1 uppercase tracking-wide text-muted-foreground">
             Your password
           </span>
           {total > 0 && (
