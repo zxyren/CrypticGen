@@ -196,7 +196,7 @@ export function Generator() {
             max={MAX_LENGTH}
             value={length}
             onChange={(e) => setLength(Number(e.target.value))}
-            className="keyzen-slider"
+            className="ui-slider"
             style={{ ['--range-progress' as string]: `${progress}%` }}
             aria-label="Password length"
           />

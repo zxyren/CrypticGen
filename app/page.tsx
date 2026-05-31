@@ -1,4 +1,4 @@
-import { Generator } from "@/components/keyzen/generator";
+import { Generator } from "@/components/pages/generator";
 
 export default function Page() {
   return (

@@ -66,7 +66,7 @@
 }
 
 /* Range slider styling */
-input[type='range'].keyzen-slider {
+input[type='range'].ui-slider {
   -webkit-appearance: none;
   appearance: none;
   width: 100%;
@@ -75,7 +75,7 @@ input[type='range'].keyzen-slider {
   cursor: pointer;
 }
 
-input[type='range'].keyzen-slider::-webkit-slider-runnable-track {
+input[type='range'].ui-slider::-webkit-slider-runnable-track {
   height: 2px;
   border-radius: 9999px;
   background: linear-gradient(to right,
@@ -83,19 +83,19 @@ input[type='range'].keyzen-slider::-webkit-slider-runnable-track {
       rgba(255, 255, 255, 0.12) var(--range-progress, 50%));
 }
 
-input[type='range'].keyzen-slider::-moz-range-track {
+input[type='range'].ui-slider::-moz-range-track {
   height: 2px;
   border-radius: 9999px;
   background: rgba(255, 255, 255, 0.12);
 }
 
-input[type='range'].keyzen-slider::-moz-range-progress {
+input[type='range'].ui-slider::-moz-range-progress {
   height: 2px;
   border-radius: 9999px;
   background: var(--accent);
 }
 
-input[type='range'].keyzen-slider::-webkit-slider-thumb {
+input[type='range'].ui-slider::-webkit-slider-thumb {
   -webkit-appearance: none;
   appearance: none;
   margin-top: -9px;
@@ -108,16 +108,16 @@ input[type='range'].keyzen-slider::-webkit-slider-thumb {
   transition: box-shadow 0.2s ease, transform 0.2s ease;
 }
 
-input[type='range'].keyzen-slider:hover::-webkit-slider-thumb,
-input[type='range'].keyzen-slider:focus-visible::-webkit-slider-thumb {
+input[type='range'].ui-slider:hover::-webkit-slider-thumb,
+input[type='range'].ui-slider:focus-visible::-webkit-slider-thumb {
   box-shadow: 0 0 0 8px rgba(79, 124, 255, 0.15);
 }
 
-input[type='range'].keyzen-slider:active::-webkit-slider-thumb {
+input[type='range'].ui-slider:active::-webkit-slider-thumb {
   transform: scale(0.9);
 }
 
-input[type='range'].keyzen-slider::-moz-range-thumb {
+input[type='range'].ui-slider::-moz-range-thumb {
   height: 20px;
   width: 20px;
   border-radius: 9999px;
@@ -126,11 +126,11 @@ input[type='range'].keyzen-slider::-moz-range-thumb {
   transition: box-shadow 0.2s ease;
 }
 
-input[type='range'].keyzen-slider:hover::-moz-range-thumb {
+input[type='range'].ui-slider:hover::-moz-range-thumb {
   box-shadow: 0 0 0 8px rgba(79, 124, 255, 0.15);
 }
 
-@keyframes keyzen-fade-up {
+@keyframes ui-fade-up {
   from {
     opacity: 0;
     transform: translateY(8px);
@@ -145,5 +145,5 @@ input[type='range'].keyzen-slider:hover::-moz-range-thumb {
 }
 
 .animate-fade-up {
-  animation: keyzen-fade-up 0.45s cubic-bezier(0.22, 1, 0.36, 1);
+  animation: ui-fade-up 0.45s cubic-bezier(0.22, 1, 0.36, 1);
 }
