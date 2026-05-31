@@ -10,18 +10,18 @@ export type HistoryEntry = {
 
 type Props = {
   open: boolean
-  onClose: () => void
+  onCloseAction: () => void
   history: HistoryEntry[]
   currentId: number | null
-  onSelect: (id: number) => void
+  onSelectAction: (id: number) => void
 }
 
 export function HistoryModal({
   open,
-  onClose,
+  onCloseAction,
   history,
   currentId,
-  onSelect,
+  onSelectAction,
 }: Props) {
   const [copiedId, setCopiedId] = useState<number | null>(null)
 
@@ -29,7 +29,7 @@ export function HistoryModal({
   useEffect(() => {
     if (!open) return
     const onKey = (e: KeyboardEvent) => {
-      if (e.key === 'Escape') onClose()
+      if (e.key === 'Escape') onCloseAction()
     }
     document.addEventListener('keydown', onKey)
     const prevOverflow = document.body.style.overflow
@@ -38,7 +38,7 @@ export function HistoryModal({
       document.removeEventListener('keydown', onKey)
       document.body.style.overflow = prevOverflow
     }
-  }, [open, onClose])
+  }, [open, onCloseAction])
 
   const handleCopy = useCallback(async (entry: HistoryEntry) => {
     try {
@@ -66,7 +66,7 @@ export function HistoryModal({
       <button
         type="button"
         aria-label="Close history"
-        onClick={onClose}
+        onClick={onCloseAction}
         className="absolute inset-0 cursor-default bg-black/70 backdrop-blur-sm animate-fade-up"
       />
 
@@ -75,7 +75,7 @@ export function HistoryModal({
         {/* Header */}
         <div className="flex items-center justify-between gap-4 border-b border-border px-5 py-4 sm:px-6">
           <div className="flex items-center gap-2.5">
-            <History className="size-[18px] text-accent" />
+            <History size={18} className="text-accent" />
             <h2 className="text-base font-bold tracking-tight text-foreground sm:text-lg">
               History
             </h2>
@@ -85,11 +85,11 @@ export function HistoryModal({
           </div>
           <button
             type="button"
-            onClick={onClose}
+            onClick={onCloseAction}
             aria-label="Close"
             className="flex size-9 items-center justify-center rounded-md text-muted-foreground transition-colors hover:bg-white/5 hover:text-foreground"
           >
-            <X className="size-[18px]" />
+            <X size={18} />
           </button>
         </div>
 
@@ -108,12 +108,12 @@ export function HistoryModal({
               const isCopied = entry.id === copiedId
               return (
                 <li key={entry.id}>
-                  <div className="group flex items-center gap-3 px-5 py-3.5 transition-colors hover:bg-white/[0.03] sm:px-6">
+                  <div className="group flex items-center gap-3 px-5 py-3.5 transition-colors hover:bg-white/5 sm:px-6">
                     <button
                       type="button"
                       onClick={() => {
-                        onSelect(entry.id)
-                        onClose()
+                        onSelectAction(entry.id)
+                        onCloseAction()
                       }}
                       className="flex min-w-0 flex-1 items-center gap-3 text-left"
                     >

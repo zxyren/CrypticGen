@@ -180,12 +180,12 @@ export function Generator() {
         <PasswordDisplay
           password={password}
           copied={copied}
-          onCopy={handleCopy}
-          onRegenerate={commit}
-          onPrev={goPrev}
-          onNext={goNext}
-          onOpenHistory={() => setHistoryOpen(true)}
-          onPasswordChange={handlePasswordChange}
+          onCopyAction={handleCopy}
+          onRegenerateAction={commit}
+          onPrevAction={goPrev}
+          onNextAction={goNext}
+          onOpenHistoryAction={() => setHistoryOpen(true)}
+          onPasswordChangeAction={handlePasswordChange}
           canPrev={index > 0}
           canNext={index < history.length - 1}
           position={history.length === 0 ? 0 : index + 1}
@@ -254,10 +254,10 @@ export function Generator() {
 
       <HistoryModal
         open={historyOpen}
-        onClose={() => setHistoryOpen(false)}
+        onCloseAction={() => setHistoryOpen(false)}
         history={history}
         currentId={currentId}
-        onSelect={selectEntry}
+        onSelectAction={selectEntry}
       />
     </div>
   )

@@ -12,12 +12,12 @@ import {
 type Props = {
   password: string
   copied: boolean
-  onCopy: () => void
-  onRegenerate: () => void
-  onPrev: () => void
-  onNext: () => void
-  onOpenHistory: () => void
-  onPasswordChange: (value: string) => void
+  onCopyAction: () => void
+  onRegenerateAction: () => void
+  onPrevAction: () => void
+  onNextAction: () => void
+  onOpenHistoryAction: () => void
+  onPasswordChangeAction: (value: string) => void
   canPrev: boolean
   canNext: boolean
   position: number
@@ -27,12 +27,12 @@ type Props = {
 export function PasswordDisplay({
   password,
   copied,
-  onCopy,
-  onRegenerate,
-  onPrev,
-  onNext,
-  onOpenHistory,
-  onPasswordChange,
+  onCopyAction,
+  onRegenerateAction,
+  onPrevAction,
+  onNextAction,
+  onOpenHistoryAction,
+  onPasswordChangeAction,
   canPrev,
   canNext,
   position,
@@ -56,7 +56,7 @@ export function PasswordDisplay({
         <div className="flex items-center gap-1">
           <button
             type="button"
-            onClick={onPrev}
+            onClick={onPrevAction}
             disabled={!canPrev}
             aria-label="Previous password"
             className="flex size-9 items-center justify-center rounded-md text-muted-foreground transition-colors hover:bg-white/5 hover:text-foreground disabled:cursor-not-allowed disabled:opacity-30 disabled:hover:bg-transparent disabled:hover:text-muted-foreground"
@@ -65,7 +65,7 @@ export function PasswordDisplay({
           </button>
           <button
             type="button"
-            onClick={onNext}
+            onClick={onNextAction}
             disabled={!canNext}
             aria-label="Next password"
             className="flex size-9 items-center justify-center rounded-md text-muted-foreground transition-colors hover:bg-white/5 hover:text-foreground disabled:cursor-not-allowed disabled:opacity-30 disabled:hover:bg-transparent disabled:hover:text-muted-foreground"
@@ -77,7 +77,7 @@ export function PasswordDisplay({
 
           <button
             type="button"
-            onClick={onOpenHistory}
+            onClick={onOpenHistoryAction}
             aria-label="Open history"
             className="flex h-9 items-center gap-2 rounded-md px-2.5 text-sm text-muted-foreground transition-colors hover:bg-white/5 hover:text-foreground"
           >
@@ -86,7 +86,7 @@ export function PasswordDisplay({
           </button>
           <button
             type="button"
-            onClick={onRegenerate}
+            onClick={onRegenerateAction}
             aria-label="Regenerate password"
             className="flex size-9 items-center justify-center rounded-md text-muted-foreground transition-colors hover:bg-white/5 hover:text-foreground"
           >
@@ -94,7 +94,7 @@ export function PasswordDisplay({
           </button>
           <button
             type="button"
-            onClick={onCopy}
+            onClick={onCopyAction}
             aria-label="Copy password"
             className="flex h-9 items-center gap-2 rounded-md px-2.5 text-sm text-muted-foreground transition-colors hover:bg-white/5 hover:text-foreground"
           >
@@ -122,7 +122,7 @@ export function PasswordDisplay({
       <div className="group/pw relative">
         <textarea
           value={password}
-          onChange={(e) => onPasswordChange(e.target.value)}
+          onChange={(e) => onPasswordChangeAction(e.target.value)}
           rows={1}
           spellCheck={false}
           autoComplete="off"
