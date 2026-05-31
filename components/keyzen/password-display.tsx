@@ -119,7 +119,7 @@ export function PasswordDisplay({
       </div>
 
       {/* Password textarea — border-bottom only, animated focus line */}
-      <div className="group/field relative">
+      <div className="group/pw relative">
         <textarea
           value={password}
           onChange={(e) => onPasswordChange(e.target.value)}
@@ -129,18 +129,15 @@ export function PasswordDisplay({
           autoCorrect="off"
           autoCapitalize="off"
           placeholder="Select at least one option"
-          className="animate-fade-up w-full resize-none overflow-hidden bg-transparent pb-2 pt-1 font-mono text-[clamp(1.5rem,7vw,4rem)] font-medium leading-[1.05] tracking-tight text-foreground placeholder:text-muted-foreground outline-none border-b border-border"
+          className="w-full resize-none overflow-hidden bg-transparent pb-9 pt-1 font-mono text-[clamp(1.4rem,5vw,3rem)] font-medium leading-[1.1] tracking-tight text-foreground placeholder:text-muted-foreground/40 outline-none"
           onInput={(e) => {
             const el = e.currentTarget
             el.style.height = 'auto'
             el.style.height = `${el.scrollHeight}px`
           }}
         />
-        {/* Animated active line: scales from left on focus */}
-        <span
-          aria-hidden
-          className="pointer-events-none absolute bottom-0 left-0 h-[2px] w-full origin-left scale-x-0 bg-foreground transition-transform duration-500 ease-out group-focus-within/field:scale-x-100"
-        />
+        <div className="absolute bottom-0 left-0 right-0 h-px bg-border" />
+        <div className="absolute bottom-0 left-0 h-0.5 w-full origin-left scale-x-0 bg-foreground transition-transform duration-300 ease-in-out group-focus-within/pw:scale-x-100" />
       </div>
     </div>
   )
