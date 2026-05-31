@@ -2,12 +2,12 @@ import { Generator } from "@/components/pages/generator";
 
 export default function Page() {
   return (
-    <div className="noise-bg relative min-h-screen bg-background">
+    <div className="relative min-h-screen bg-background">
       <div className="relative z-10 mx-auto flex min-h-screen w-full max-w-5xl flex-col px-5 py-6 sm:px-8 sm:py-10 lg:px-10">
         {/* Top bar */}
         <header className="flex items-center justify-between">
           <span className="text-base font-extrabold tracking-tight text-foreground sm:text-lg">
-            CrypticGen
+            CryptGen
           </span>
           <span className="hidden text-xs uppercase tracking-[0.25em] text-muted-foreground sm:block">
             Privacy first

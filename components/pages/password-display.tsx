@@ -53,7 +53,7 @@ export function PasswordDisplay({
             Your password
           </span>
           {total > 0 && (
-            <span className="font-mono text-xs tabular-nums text-muted-foreground">
+            <span className="font-mono tabular-nums text-muted-foreground">
               {position}/{total}
             </span>
           )}

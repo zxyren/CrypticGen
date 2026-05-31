@@ -14,11 +14,38 @@ const jetbrainsMono = JetBrains_Mono({
   display: "swap",
 });
 
+const BASE_URL = "https://cryptgen.pages.dev";
+
 export const metadata: Metadata = {
-  title: "CrypticGen — Create Strong Passwords",
+  title: "CryptGen — Create Strong Passwords",
   description:
     "A typography-first password generator. Generated locally. Never stored. Never sent.",
+  metadataBase: new URL(BASE_URL),
   generator: "v0.app",
+  openGraph: {
+    title: "CryptGen — Create Strong Passwords",
+    description:
+      "A typography-first password generator. Generated locally. Never stored. Never sent.",
+    url: BASE_URL,
+    siteName: "CryptGen",
+    images: [
+      {
+        url: "/og-image.png",
+        width: 1200,
+        height: 630,
+        alt: "CryptGen — Create Strong Passwords",
+      },
+    ],
+    locale: "en_US",
+    type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "CryptGen — Create Strong Passwords",
+    description:
+      "A typography-first password generator. Generated locally. Never stored. Never sent.",
+    images: ["/og-image.png"],
+  },
   icons: {
     icon: [
       {
