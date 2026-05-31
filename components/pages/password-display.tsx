@@ -97,7 +97,7 @@ export function PasswordDisplay({
           autoCorrect="off"
           autoCapitalize="off"
           placeholder={mounted ? 'Type your password...' : 'Generating...'}
-          className="w-full resize-none overflow-hidden bg-transparent pt-1 font-mono text-4xl md:text-5xl lg:text-6xl font-medium leading-[1.1] tracking-tight text-foreground placeholder:text-muted-foreground/40 outline-none"
+          className="w-full resize-none overflow-hidden bg-transparent pt-1 font-mono text-2xl md:text-3xl lg:text-5xl font-medium leading-[1.1] tracking-tight text-foreground placeholder:text-muted-foreground/40 outline-none"
           onInput={(e) => {
             const el = e.currentTarget
             el.style.height = 'auto'

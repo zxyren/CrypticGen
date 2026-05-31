@@ -16,10 +16,10 @@ export default function Page() {
 
         {/* Hero */}
         <section className="mt-16 sm:mt-24 lg:mt-32">
-          <h1 className="text-[clamp(2.75rem,12vw,9rem)] font-extrabold uppercase leading-[0.92] tracking-[-0.03em] text-foreground text-balance">
-            Create
+          <h1 className="text-5xl md:text-8xl xl:text-9xl font-extrabold uppercase leading-[0.92] tracking-[-0.03em] text-foreground text-balance">
+            Generate
             <br />
-            Strong
+            Random
             <br />
             Passwords
           </h1>

@@ -23,7 +23,7 @@ const OPTION_LABELS: { key: keyof CharOptions; label: string }[] = [
 ]
 
 export function Generator() {
-  const [length, setLength] = useState(20)
+  const [length, setLength] = useState(16)
   const [options, setOptions] = useState<CharOptions>({
     uppercase: true,
     lowercase: true,
@@ -31,7 +31,7 @@ export function Generator() {
     symbols: true,
   })
   const [history, setHistory] = useState<HistoryEntry[]>(() => {
-    const pw = generatePassword(20, { uppercase: true, lowercase: true, numbers: true, symbols: true })
+    const pw = generatePassword(16, { uppercase: true, lowercase: true, numbers: true, symbols: true })
     return pw ? [{ id: 0, password: pw }] : []
   })
   const [index, setIndex] = useState(0)
