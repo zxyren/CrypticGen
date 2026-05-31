@@ -119,17 +119,17 @@ export function PasswordDisplay({
       </div>
 
       {/* Password textarea — border-bottom only, animated focus line */}
-      <div className="group/pw relative">
+      <div key={password} className="group/pw relative animate-fade-up">
         <textarea
           value={password}
           onChange={(e) => onPasswordChangeAction(e.target.value)}
-          rows={1}
+          rows={2}
           spellCheck={false}
           autoComplete="off"
           autoCorrect="off"
           autoCapitalize="off"
           placeholder="Select at least one option"
-          className="w-full resize-none overflow-hidden bg-transparent pb-9 pt-1 font-mono text-[clamp(1.4rem,5vw,3rem)] font-medium leading-[1.1] tracking-tight text-foreground placeholder:text-muted-foreground/40 outline-none"
+          className="w-full resize-none overflow-hidden bg-transparent pt-1 font-mono text-4xl md:text-5xl lg:text-6xl font-medium leading-[1.1] tracking-tight text-foreground placeholder:text-muted-foreground/40 outline-none"
           onInput={(e) => {
             const el = e.currentTarget
             el.style.height = 'auto'
