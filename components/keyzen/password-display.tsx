@@ -8,6 +8,7 @@ import {
   Copy,
   RotateCw,
 } from 'lucide-react'
+import { useState, useEffect } from 'react'
 
 type Props = {
   password: string
@@ -38,6 +39,8 @@ export function PasswordDisplay({
   position,
   total,
 }: Props) {
+  const [mounted, setMounted] = useState(false)
+  useEffect(() => { setMounted(true) }, [])
   return (
     <div className="w-full">
       {/* Toolbar */}
@@ -119,8 +122,9 @@ export function PasswordDisplay({
       </div>
 
       {/* Password textarea — border-bottom only, animated focus line */}
-      <div key={password} className="group/pw relative animate-fade-up">
+      <div className="group/pw relative animate-fade-up">
         <textarea
+          key={!password ? 'empty' : undefined}
           value={password}
           onChange={(e) => onPasswordChangeAction(e.target.value)}
           rows={2}
@@ -128,8 +132,8 @@ export function PasswordDisplay({
           autoComplete="off"
           autoCorrect="off"
           autoCapitalize="off"
-          placeholder="Select at least one option"
-          className="w-full resize-none overflow-hidden bg-transparent pt-1 font-mono text-4xl md:text-5xl lg:text-6xl font-medium leading-[1.1] tracking-tight text-foreground placeholder:text-muted-foreground/40 outline-none"
+          placeholder={mounted ? 'Type your password...' : 'Generating...'}
+          className="w-full animate-fade-up resize-none overflow-hidden bg-transparent pt-1 font-mono text-4xl md:text-5xl lg:text-6xl font-medium leading-[1.1] tracking-tight text-foreground placeholder:text-muted-foreground/40 outline-none"
           onInput={(e) => {
             const el = e.currentTarget
             el.style.height = 'auto'
