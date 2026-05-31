@@ -4,10 +4,7 @@ import { useCallback, useEffect, useState } from 'react'
 import { Check, Copy, History, Trash2, X } from 'lucide-react'
 import { Button } from '../ui/button'
 
-export type HistoryEntry = {
-  id: number
-  password: string
-}
+export type HistoryEntry = { id: number; password: string }
 
 type Props = {
   open: boolean
@@ -18,27 +15,17 @@ type Props = {
   onClearAction: () => void
 }
 
-export function HistoryModal({
-  open,
-  onCloseAction,
-  history,
-  currentId,
-  onSelectAction,
-  onClearAction,
-}: Props) {
+export function HistoryModal({ open, onCloseAction, history, currentId, onSelectAction, onClearAction }: Props) {
   const [copiedId, setCopiedId] = useState<number | null>(null)
 
   useEffect(() => {
     if (!open) return
-    const onKey = (e: KeyboardEvent) => {
-      if (e.key === 'Escape') onCloseAction()
-    }
+    const onKey = (e: KeyboardEvent) => { if (e.key === 'Escape') onCloseAction() }
     document.addEventListener('keydown', onKey)
-    const prevOverflow = document.body.style.overflow
     document.body.style.overflow = 'hidden'
     return () => {
       document.removeEventListener('keydown', onKey)
-      document.body.style.overflow = prevOverflow
+      document.body.style.overflow = ''
     }
   }, [open, onCloseAction])
 
@@ -47,110 +34,65 @@ export function HistoryModal({
       await navigator.clipboard.writeText(entry.password)
       setCopiedId(entry.id)
       window.setTimeout(() => setCopiedId(null), 1400)
-    } catch {
-      // Clipboard unavailable — ignore.
-    }
+    } catch { }
   }, [])
 
   if (!open) return null
 
-  // Newest first.
   const ordered = [...history].reverse()
 
   return (
-    <div
-      role="dialog"
-      aria-modal="true"
-      aria-label="Password history"
-      className="fixed inset-0 z-50 flex items-end justify-center sm:items-center"
-    >
-      {/* Backdrop */}
-      <button
-        type="button"
-        aria-label="Close history"
-        onClick={onCloseAction}
-        className="absolute inset-0 cursor-default bg-black/70 backdrop-blur-sm animate-fade-up"
-      />
+    <div role="dialog" aria-modal="true" aria-label="Password history" className="fixed inset-0 z-50 flex items-end justify-center sm:items-center">
+      <button type="button" aria-label="Close" onClick={onCloseAction} className="absolute inset-0 cursor-default bg-black/70 backdrop-blur-sm" />
 
-      {/* Panel */}
-      <div className="animate-fade-up relative z-10 flex max-h-[85vh] w-full flex-col overflow-hidden rounded-t-2xl border border-border bg-surface sm:max-h-[80vh] sm:max-w-lg sm:rounded-2xl">
+      <div className="animate-fade-up relative z-10 flex w-full flex-col overflow-hidden rounded-t-2xl border border-border bg-surface sm:max-w-lg sm:rounded-2xl" style={{ maxHeight: '85dvh' }}>
         {/* Header */}
-        <div className="flex items-center justify-between gap-4 border-b border-border px-5 py-4 sm:px-6">
-          <div className="flex items-center gap-2.5">
-            <History size={18} className="text-accent" />
-            <h2 className="text-base font-bold tracking-tight text-foreground sm:text-lg">
-              History
-            </h2>
-            <span className="font-mono tabular-nums text-muted-foreground">
-              {history.length}
-            </span>
+        <div className="flex shrink-0 items-center justify-between border-b border-border px-4 py-3 sm:px-6">
+          <div className="flex items-center gap-2">
+            <History size={16} className="text-accent" />
+            <span className="font-semibold text-foreground">History</span>
+            <span className="font-mono text-sm text-muted-foreground">{history.length}</span>
           </div>
           <div className="flex items-center gap-1">
             {history.length > 0 && (
               <Button variant="danger" size="icon-lg" onClick={onClearAction} title="Clear history">
-                <Trash2 size={18} />
+                <Trash2 size={16} />
               </Button>
             )}
-            <Button variant="ghost" size="icon-lg" onClick={onCloseAction} title="Close history">
-              <X size={18} />
+            <Button variant="ghost" size="icon-lg" onClick={onCloseAction} title="Close">
+              <X size={16} />
             </Button>
           </div>
         </div>
 
         {/* List */}
         {ordered.length === 0 ? (
-          <div className="flex flex-col items-center justify-center gap-2 px-6 py-16 text-center">
+          <div className="flex flex-col items-center justify-center gap-1 py-16 text-center">
             <p className="text-sm text-muted-foreground">No passwords yet.</p>
-            <p className="text-xs text-muted-foreground">
-              Generated passwords will appear here.
-            </p>
+            <p className="text-xs text-muted-foreground/60">Generated passwords will appear here.</p>
           </div>
         ) : (
-          <ul className="flex-1 divide-y divide-border overflow-y-auto">
+          <ul className="flex-1 divide-y divide-border overflow-y-auto [scrollbar-width:thin] [&::-webkit-scrollbar]:w-1 [&::-webkit-scrollbar-track]:bg-transparent [&::-webkit-scrollbar-thumb]:rounded-full [&::-webkit-scrollbar-thumb]:bg-white/10 [&::-webkit-scrollbar-thumb:hover]:bg-white/20">
             {ordered.map((entry) => {
               const isCurrent = entry.id === currentId
               const isCopied = entry.id === copiedId
               return (
-                <li key={entry.id}>
-                  <div className="group flex items-center gap-3 px-5 py-3.5 transition-colors hover:bg-white/5 sm:px-6">
-                    <button
-                      type="button"
-                      onClick={() => {
-                        onSelectAction(entry.id)
-                        onCloseAction()
-                      }}
-                      className="flex min-w-0 flex-1 items-center gap-3 text-left"
-                    >
-                      <span
-                        className={`h-2 w-2 shrink-0 rounded-full ${isCurrent ? 'bg-accent' : 'bg-transparent'
-                          }`}
-                        aria-hidden
-                      />
-                      <span className="truncate font-mono text-sm text-foreground">
-                        {entry.password}
-                      </span>
-                    </button>
-                    {isCurrent && (
-                      <span className="hidden shrink-0 text-sm font-medium text-accent sm:inline">
-                        Current
-                      </span>
-                    )}
-                    <Button variant="ghost" size="icon-lg" onClick={() => handleCopy(entry)} title="Copy password">
-                      <span className="relative flex items-center justify-center">
-                        <Copy
-                          size={18}
-                          className={`absolute transition-all duration-200 ${isCopied ? 'scale-50 opacity-0' : 'scale-100 opacity-100'
-                            }`}
-                        />
-                        <Check
-                          size={18}
-                          className={`absolute text-accent transition-all duration-200 ${isCopied ? 'scale-100 opacity-100' : 'scale-50 opacity-0'
-                            }`}
-                          strokeWidth={3}
-                        />
-                      </span>
-                    </Button>
-                  </div>
+                <li key={entry.id} className="flex items-center gap-2 px-4 py-3 transition-colors hover:bg-white/5 sm:px-6">
+                  <button
+                    type="button"
+                    onClick={() => { onSelectAction(entry.id); onCloseAction() }}
+                    className="flex min-w-0 flex-1 items-center gap-2.5 text-left outline-none"
+                  >
+                    <span className={`size-1.5 shrink-0 rounded-full transition-colors ${isCurrent ? 'bg-accent' : 'bg-transparent'}`} />
+                    <span className="truncate font-mono text-sm text-foreground">{entry.password}</span>
+                  </button>
+                  {isCurrent && <span className="hidden shrink-0 text-xs font-medium text-accent sm:inline">Current</span>}
+                  <Button variant="ghost" size="icon-lg" onClick={() => handleCopy(entry)} title="Copy">
+                    <span className="relative flex size-4 items-center justify-center">
+                      <Copy size={14} className={`absolute transition-all duration-200 ${isCopied ? 'scale-50 opacity-0' : 'scale-100 opacity-100'}`} />
+                      <Check size={14} className={`absolute text-accent transition-all duration-200 ${isCopied ? 'scale-100 opacity-100' : 'scale-50 opacity-0'}`} strokeWidth={3} />
+                    </span>
+                  </Button>
                 </li>
               )
             })}
