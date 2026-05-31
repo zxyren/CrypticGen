@@ -40,27 +40,15 @@ export const metadata: Metadata = {
     type: "website",
   },
   twitter: {
-    card: "summary_large_image",
+    card: "summary",
     title: "CryptGen — Create Strong Passwords",
     description:
       "A typography-first password generator. Generated locally. Never stored. Never sent.",
     images: ["/og-image.png"],
   },
+  // Replace your current icons block with this:
   icons: {
-    icon: [
-      {
-        url: "/icon-light-32x32.png",
-        media: "(prefers-color-scheme: light)",
-      },
-      {
-        url: "/icon-dark-32x32.png",
-        media: "(prefers-color-scheme: dark)",
-      },
-      {
-        url: "/icon.svg",
-        type: "image/svg+xml",
-      },
-    ],
+    icon: "/favicon.svg",
     apple: "/apple-icon.png",
   },
 };
