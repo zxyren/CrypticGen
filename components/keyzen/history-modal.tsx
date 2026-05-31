@@ -118,9 +118,8 @@ export function HistoryModal({
                       className="flex min-w-0 flex-1 items-center gap-3 text-left"
                     >
                       <span
-                        className={`size-1.5 shrink-0 rounded-full ${
-                          isCurrent ? 'bg-accent' : 'bg-transparent'
-                        }`}
+                        className={`size-1.5 shrink-0 rounded-full ${isCurrent ? 'bg-accent' : 'bg-transparent'
+                          }`}
                         aria-hidden
                       />
                       <span className="truncate font-mono text-sm text-foreground">
@@ -140,14 +139,12 @@ export function HistoryModal({
                     >
                       <span className="relative flex size-4 items-center justify-center">
                         <Copy
-                          className={`absolute size-4 transition-all duration-200 ${
-                            isCopied ? 'scale-50 opacity-0' : 'scale-100 opacity-100'
-                          }`}
+                          className={`absolute size-4 transition-all duration-200 ${isCopied ? 'scale-50 opacity-0' : 'scale-100 opacity-100'
+                            }`}
                         />
                         <Check
-                          className={`absolute size-4 text-accent transition-all duration-200 ${
-                            isCopied ? 'scale-100 opacity-100' : 'scale-50 opacity-0'
-                          }`}
+                          className={`absolute size-4 text-accent transition-all duration-200 ${isCopied ? 'scale-100 opacity-100' : 'scale-50 opacity-0'
+                            }`}
                           strokeWidth={3}
                         />
                       </span>

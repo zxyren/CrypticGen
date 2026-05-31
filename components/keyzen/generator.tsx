@@ -37,6 +37,10 @@ export function Generator() {
 
   const indexRef = useRef(0)
   const idRef = useRef(0)
+  // Tracks whether the user is manually editing — prevents auto-generate
+  // from overwriting their changes.
+  const isEditingRef = useRef(false)
+
   useEffect(() => {
     indexRef.current = index
   }, [index])
@@ -51,16 +55,25 @@ export function Generator() {
 
   /**
    * Generate a password.
-   * - "auto": live tuning — replaces the current entry when it's the newest,
-   *   so dragging the slider doesn't flood history.
-   * - "commit": explicit action — always appends a new entry to history.
+   * - "auto": live tuning — replaces the current entry when it's the newest.
+   *   Skipped when the user is actively editing.
+   * - "commit": explicit action — always appends a new entry and clears the
+   *   editing flag.
    */
   const generate = useCallback(
     (mode: 'auto' | 'commit') => {
+      if (mode === 'auto' && isEditingRef.current) return
+
       const pw = generatePassword(length, options)
       if (!pw) return
+
+      if (mode === 'commit') {
+        isEditingRef.current = false
+      }
+
       setHistory((prev) => {
-        const atLatest = prev.length > 0 && indexRef.current === prev.length - 1
+        const atLatest =
+          prev.length > 0 && indexRef.current === prev.length - 1
         if (mode === 'auto' && atLatest) {
           const next = [...prev]
           next[next.length - 1] = { ...next[next.length - 1], password: pw }
@@ -81,6 +94,16 @@ export function Generator() {
   useEffect(() => {
     setIndex(history.length > 0 ? history.length - 1 : 0)
   }, [history.length])
+
+  const handlePasswordChange = useCallback((value: string) => {
+    isEditingRef.current = true
+    setHistory((prev) => {
+      if (prev.length === 0) return prev
+      const next = [...prev]
+      next[indexRef.current] = { ...next[indexRef.current], password: value }
+      return next
+    })
+  }, [])
 
   const handleCopy = useCallback(async () => {
     if (!password) return
@@ -112,6 +135,8 @@ export function Generator() {
   const toggleOption = (key: keyof CharOptions, value: boolean) => {
     // Prevent disabling the last remaining option.
     if (!value && activeCount === 1) return
+    // Changing options means a fresh generate — clear the editing lock.
+    isEditingRef.current = false
     setOptions((prev) => ({ ...prev, [key]: value }))
   }
 
@@ -141,8 +166,12 @@ export function Generator() {
     return () => window.removeEventListener('keydown', onKey)
   }, [commit, handleCopy, historyOpen])
 
-  const strength = useMemo(() => getStrength(length, options), [length, options])
-  const progress = ((length - MIN_LENGTH) / (MAX_LENGTH - MIN_LENGTH)) * 100
+  const strength = useMemo(
+    () => getStrength(length, options),
+    [length, options],
+  )
+  const progress =
+    ((length - MIN_LENGTH) / (MAX_LENGTH - MIN_LENGTH)) * 100
 
   return (
     <div className="flex flex-col gap-14 sm:gap-16 lg:gap-20">
@@ -156,6 +185,7 @@ export function Generator() {
           onPrev={goPrev}
           onNext={goNext}
           onOpenHistory={() => setHistoryOpen(true)}
+          onPasswordChange={handlePasswordChange}
           canPrev={index > 0}
           canNext={index < history.length - 1}
           position={history.length === 0 ? 0 : index + 1}

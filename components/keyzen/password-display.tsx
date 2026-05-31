@@ -1,4 +1,4 @@
-"use client";
+'use client'
 
 import {
   Check,
@@ -7,21 +7,22 @@ import {
   Clock,
   Copy,
   RotateCw,
-} from "lucide-react";
+} from 'lucide-react'
 
 type Props = {
-  password: string;
-  copied: boolean;
-  onCopy: () => void;
-  onRegenerate: () => void;
-  onPrev: () => void;
-  onNext: () => void;
-  onOpenHistory: () => void;
-  canPrev: boolean;
-  canNext: boolean;
-  position: number;
-  total: number;
-};
+  password: string
+  copied: boolean
+  onCopy: () => void
+  onRegenerate: () => void
+  onPrev: () => void
+  onNext: () => void
+  onOpenHistory: () => void
+  onPasswordChange: (value: string) => void
+  canPrev: boolean
+  canNext: boolean
+  position: number
+  total: number
+}
 
 export function PasswordDisplay({
   password,
@@ -31,6 +32,7 @@ export function PasswordDisplay({
   onPrev,
   onNext,
   onOpenHistory,
+  onPasswordChange,
   canPrev,
   canNext,
   position,
@@ -38,6 +40,7 @@ export function PasswordDisplay({
 }: Props) {
   return (
     <div className="w-full">
+      {/* Toolbar */}
       <div className="mb-4 flex flex-wrap items-center justify-between gap-y-2">
         <div className="flex items-center gap-3">
           <span className="text-xs uppercase tracking-wider text-muted-foreground">
@@ -51,7 +54,6 @@ export function PasswordDisplay({
         </div>
 
         <div className="flex items-center gap-1">
-          {/* History navigation */}
           <button
             type="button"
             onClick={onPrev}
@@ -99,35 +101,47 @@ export function PasswordDisplay({
             <span className="relative flex size-5 items-center justify-center">
               <Copy
                 size={18}
-                className={`absolute transition-all duration-200 ${
-                  copied ? "scale-50 opacity-0" : "scale-100 opacity-100"
-                }`}
+                className={`absolute transition-all duration-200 ${copied ? 'scale-50 opacity-0' : 'scale-100 opacity-100'
+                  }`}
               />
               <Check
                 size={18}
-                className={`absolute text-accent transition-all duration-200 ${
-                  copied ? "scale-100 opacity-100" : "scale-50 opacity-0"
-                }`}
+                className={`absolute text-accent transition-all duration-200 ${copied ? 'scale-100 opacity-100' : 'scale-50 opacity-0'
+                  }`}
                 strokeWidth={3}
               />
             </span>
             <span className="hidden sm:inline">
-              {copied ? "Copied" : "Copy"}
+              {copied ? 'Copied' : 'Copy'}
             </span>
           </button>
         </div>
       </div>
 
-      <div
-        key={password}
-        className="animate-fade-up break-all font-mono text-[clamp(1.5rem,7vw,4rem)] font-medium leading-[1.05] tracking-tight text-foreground"
-      >
-        {password || (
-          <span className="text-muted-foreground">
-            Select at least one option
-          </span>
-        )}
+      {/* Password textarea — border-bottom only, animated focus line */}
+      <div className="group/field relative">
+        <textarea
+          value={password}
+          onChange={(e) => onPasswordChange(e.target.value)}
+          rows={1}
+          spellCheck={false}
+          autoComplete="off"
+          autoCorrect="off"
+          autoCapitalize="off"
+          placeholder="Select at least one option"
+          className="animate-fade-up w-full resize-none overflow-hidden bg-transparent pb-2 pt-1 font-mono text-[clamp(1.5rem,7vw,4rem)] font-medium leading-[1.05] tracking-tight text-foreground placeholder:text-muted-foreground outline-none border-b border-border"
+          onInput={(e) => {
+            const el = e.currentTarget
+            el.style.height = 'auto'
+            el.style.height = `${el.scrollHeight}px`
+          }}
+        />
+        {/* Animated active line: scales from left on focus */}
+        <span
+          aria-hidden
+          className="pointer-events-none absolute bottom-0 left-0 h-[2px] w-full origin-left scale-x-0 bg-foreground transition-transform duration-500 ease-out group-focus-within/field:scale-x-100"
+        />
       </div>
     </div>
-  );
+  )
 }
