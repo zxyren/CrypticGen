@@ -49,12 +49,12 @@ export function PasswordDisplay({
     <div className="w-full">
       {/* Toolbar */}
       <div className="mb-4 flex flex-wrap items-center justify-between gap-y-2">
-        <div className="flex items-center gap-3">
-          <span className="mb-1 uppercase tracking-wide text-muted-foreground">
+        <div className="flex items-center gap-3 text-muted-foreground">
+          <span className="uppercase tracking-wide">
             Your password
           </span>
           {total > 0 && (
-            <span className="font-mono tabular-nums text-muted-foreground">
+            <span className="font-mono tabular-nums text-foreground">
               {position}/{total}
             </span>
           )}
