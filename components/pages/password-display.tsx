@@ -10,6 +10,11 @@ import {
 } from 'lucide-react'
 import { useState, useEffect } from 'react'
 import { Button } from '../ui/button'
+import {
+  Tooltip,
+  TooltipContent,
+  TooltipTrigger,
+} from "@/components/ui/tooltip"
 
 type Props = {
   password: string
@@ -61,11 +66,11 @@ export function PasswordDisplay({
         </div>
 
         <div className="flex items-center gap-1">
-          <Button variant="ghost" size="icon-lg" onClick={onPrevAction} disabled={!canPrev}>
-            <ChevronLeft size={18} />
+          <Button variant="ghost" size="icon-lg" onClick={onPrevAction} disabled={!canPrev} className="group">
+            <ChevronLeft size={18} className='group-active:-translate-x-0.5 transition-all duration-200' />
           </Button>
-          <Button variant="ghost" size="icon-lg" onClick={onNextAction} disabled={!canNext}>
-            <ChevronRight size={18} />
+          <Button variant="ghost" size="icon-lg" onClick={onNextAction} disabled={!canNext} className="group">
+            <ChevronRight size={18} className='group-active:translate-x-0.5 transition-all duration-200' />
           </Button>
 
           <span className="mx-1 h-5 w-px bg-border" aria-hidden />
