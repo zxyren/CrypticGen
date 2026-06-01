@@ -15,8 +15,7 @@ export default function Page() {
           <p className="mt-6 text-pretty text-base leading-relaxed text-muted-foreground sm:mt-8 sm:text-xl">
             Generated locally.
             <br className="sm:hidden" />{" "}
-            <span className="text-foreground">Never stored.</span>{" "}
-            <span className="text-foreground">Never sent.</span>
+            <span className="text-foreground">Never stored. Never sent.</span>
           </p>
         </section>
 

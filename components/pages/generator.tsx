@@ -211,7 +211,7 @@ export function Generator() {
             <span className="uppercase tracking-wide text-muted-foreground">
               Length
             </span>
-            <span className="font-mono text-2xl font-medium tabular-nums text-foreground">
+            <span className="text-sm font-bold tabular-nums text-foreground sm:text-lg md:text-xl">
               {length}
             </span>
           </div>
@@ -225,7 +225,7 @@ export function Generator() {
             style={{ ['--range-progress' as string]: `${progress}%` }}
             aria-label="Password length"
           />
-          <div className="flex justify-between text-xs text-muted-foreground">
+          <div className="flex justify-between text-sm text-muted-foreground">
             <span>{MIN_LENGTH}</span>
             <span>{MAX_LENGTH}</span>
           </div>

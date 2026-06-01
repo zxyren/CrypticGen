@@ -13,19 +13,18 @@ const STRENGTH_COLORS: Record<number, string> = {
 export function StrengthIndicator({ strength }: { strength: Strength }) {
   const activeColor = STRENGTH_COLORS[strength.score] ?? 'bg-accent'
 
+  const progress = `${(Math.max(0, Math.min(4, strength.score)) / 4) * 100}%`
+
   return (
     <div className="flex items-center gap-4">
-      <span className="text-md font-bold tracking-tight text-foreground sm:text-xl md:text-2xl">
+      <span className="text-sm whitespace-nowrap font-bold tracking-tight text-foreground sm:text-lg md:text-xl">
         {strength.label}
       </span>
-      <div className="flex flex-1 items-center gap-1.5">
-        {[1, 2, 3, 4].map((i) => (
-          <span
-            key={i}
-            className={`h-1 flex-1 rounded-full transition-all duration-300 ${i <= strength.score ? activeColor : 'bg-white/10'
-              }`}
-          />
-        ))}
+      <div className="h-1 w-full overflow-hidden rounded-full bg-white/10">
+        <div
+          className={`h-full rounded-full transition-all duration-300 ${activeColor}`}
+          style={{ width: progress }}
+        />
       </div>
     </div>
   )
