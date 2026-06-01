@@ -86,7 +86,7 @@ export function HistoryModal({ open, onCloseAction, history, currentId, onSelect
                       {entry.password}
                     </span>
                   </button>
-                  <Button variant="ghost" size="icon-lg" onClick={() => handleCopy(entry)} title="Copy">
+                  <Button variant="ghost" size="icon-lg" onClick={() => handleCopy(entry)}>
                     <span className="relative flex size-4 items-center justify-center">
                       <Copy size={14} className={`absolute transition-all duration-300 ${isCopied ? 'scale-0' : 'scale-100'}`} />
                       <Check size={14} className={`absolute text-accent transition-all duration-300 ${isCopied ? 'scale-100' : 'scale-0'}`} strokeWidth={3} />

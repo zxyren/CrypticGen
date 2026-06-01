@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Bricolage_Grotesque, JetBrains_Mono } from "next/font/google";
 import { Analytics } from "@vercel/analytics/next";
 import "./globals.css";
+import { TooltipProvider } from "@/components/ui/tooltip";
 
 const bricolage = Bricolage_Grotesque({
   subsets: ["latin"],
@@ -64,8 +65,10 @@ export default function RootLayout({
       className={`dark bg-background ${bricolage.variable} ${jetbrainsMono.variable}`}
     >
       <body className="font-sans antialiased">
-        {children}
-        {process.env.NODE_ENV === "production" && <Analytics />}
+        <TooltipProvider>
+          {children}
+          {process.env.NODE_ENV === "production" && <Analytics />}
+        </TooltipProvider>
       </body>
     </html>
   );
