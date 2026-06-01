@@ -10,11 +10,6 @@ import {
 } from 'lucide-react'
 import { useState, useEffect } from 'react'
 import { Button } from '../ui/button'
-import {
-  Tooltip,
-  TooltipContent,
-  TooltipTrigger,
-} from "@/components/ui/tooltip"
 
 type Props = {
   password: string
