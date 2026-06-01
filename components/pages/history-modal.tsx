@@ -1,7 +1,7 @@
 'use client'
 
 import { useCallback, useEffect, useState } from 'react'
-import { Check, Copy, History, Trash2, X } from 'lucide-react'
+import { Check, Copy, Trash2, X } from 'lucide-react'
 import { Button } from '../ui/button'
 
 export type HistoryEntry = { id: number; password: string }

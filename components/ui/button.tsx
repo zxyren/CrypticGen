@@ -8,27 +8,16 @@ const buttonVariants = cva(
     {
         variants: {
             variant: {
-                // Primary — solid foreground fill, used for main CTAs
                 default:
                     "bg-foreground text-background hover:bg-foreground/80",
-
-                // Outlined — subtle border, used for secondary actions
                 outline:
                     "border-border bg-transparent text-muted-foreground hover:bg-white/5 hover:text-foreground",
-
-                // Ghost — no border, minimal, used for toolbar actions
                 ghost:
                     "text-muted-foreground hover:bg-white/5 hover:text-foreground",
-
-                // Accent — blue fill, used for highlighted actions
                 accent:
                     "bg-accent text-white hover:bg-accent/80",
-
-                // Danger — red tint, used for destructive actions
                 danger:
                     "text-muted-foreground hover:bg-red-500/10 hover:text-red-400",
-
-                // Link — no background, underline on hover
                 link:
                     "text-accent underline-offset-4 hover:underline",
             },

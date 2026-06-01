@@ -74,8 +74,8 @@ export function PasswordDisplay({
             <Clock size={18} className="group-hover:-rotate-360 transition-all duration-300" />
             <span className="hidden md:inline group-hover:text-accent">History</span>
           </Button>
-          <Button variant="ghost" size="icon-lg" onClick={onRegenerateAction}>
-            <RotateCw size={18} className="transition-all duration-300 active:rotate-90" />
+          <Button variant="ghost" size="icon-lg" onClick={onRegenerateAction} className="group">
+            <RotateCw size={18} className="transition-all duration-300 group-active:rotate-90" />
           </Button>
           <Button variant="ghost" size="lg" onClick={onCopyAction} aria-label="Copy password">
             <span className="relative flex size-4 items-center justify-center">
