@@ -4,19 +4,8 @@ export default function Page() {
   return (
     <div className="relative min-h-screen bg-background">
       <div className="relative z-10 mx-auto flex min-h-screen w-full max-w-5xl flex-col px-5 py-6 sm:px-8 sm:py-10 lg:px-10">
-        {/* Top bar */}
-        <header className="flex items-center justify-between">
-          <span className="text-base font-extrabold tracking-tight text-foreground sm:text-lg">
-            CryptGen
-          </span>
-          <span className="hidden text-xs uppercase tracking-[0.25em] text-muted-foreground sm:block">
-            Privacy first
-          </span>
-        </header>
-
-        {/* Hero */}
-        <section className="mt-16 sm:mt-24 lg:mt-32">
-          <h1 className="text-5xl md:text-8xl xl:text-9xl font-extrabold uppercase leading-[0.92] tracking-[-0.03em] text-foreground text-balance">
+        <section className="flex flex-col items-start gap-6">
+          <h1 className="text-5xl md:text-8xl xl:text-9xl font-extrabold uppercase tracking-tighter text-foreground text-balance">
             Generate
             <br />
             Random

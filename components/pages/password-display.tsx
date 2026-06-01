@@ -70,17 +70,17 @@ export function PasswordDisplay({
 
           <span className="mx-1 h-5 w-px bg-border" aria-hidden />
 
-          <Button variant="ghost" size="lg" onClick={onOpenHistoryAction}>
-            <Clock size={18} />
-            <span className="hidden md:inline">History</span>
+          <Button variant="ghost" size="lg" onClick={onOpenHistoryAction} className="group">
+            <Clock size={18} className="group-hover:-rotate-360 transition-all duration-300" />
+            <span className="hidden md:inline group-hover:text-accent">History</span>
           </Button>
           <Button variant="ghost" size="icon-lg" onClick={onRegenerateAction}>
-            <RotateCw size={18} />
+            <RotateCw size={18} className="transition-all duration-300 active:rotate-90" />
           </Button>
           <Button variant="ghost" size="lg" onClick={onCopyAction} aria-label="Copy password">
             <span className="relative flex size-4 items-center justify-center">
-              <Copy size={16} className={`absolute transition-all duration-200 ${copied ? 'scale-50 opacity-0' : 'scale-100 opacity-100'}`} />
-              <Check size={16} className={`absolute text-accent transition-all duration-200 ${copied ? 'scale-100 opacity-100' : 'scale-50 opacity-0'}`} strokeWidth={3} />
+              <Copy size={18} className={`absolute transition-all duration-300 ${copied ? 'scale-0' : 'scale-100'}`} />
+              <Check size={18} className={`absolute text-accent transition-all duration-300 ${copied ? 'scale-100' : 'scale-0'}`} />
             </span>
             <span className="hidden sm:inline">{copied ? 'Copied' : 'Copy'}</span>
           </Button>

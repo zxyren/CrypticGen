@@ -27,7 +27,8 @@ export function OptionCheckbox({ label, checked, onChangeAction, disabled }: Pro
           }`}
       >
         <Check
-          className={`size-4 text-white transition-all duration-200 ${checked ? 'scale-100 opacity-100' : 'scale-50 opacity-0'
+          size={14}
+          className={`text-white transition-all duration-300 ${checked ? 'scale-100' : 'scale-0'
             }`}
           strokeWidth={3}
         />

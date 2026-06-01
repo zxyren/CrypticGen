@@ -48,8 +48,7 @@ export function HistoryModal({ open, onCloseAction, history, currentId, onSelect
       <div className="animate-fade-up relative z-10 flex w-full flex-col overflow-hidden rounded-t-2xl border border-border bg-surface sm:max-w-lg sm:rounded-2xl" style={{ maxHeight: '85dvh' }}>
         {/* Header */}
         <div className="flex shrink-0 items-center justify-between border-b border-border px-4 py-3 sm:px-6">
-          <div className="flex items-center gap-2">
-            <History size={16} className="text-accent" />
+          <div className="flex items-center text-lg gap-2">
             <span className="font-semibold text-foreground">History</span>
             <span className="font-mono text-sm text-muted-foreground">{history.length}</span>
           </div>
@@ -87,10 +86,10 @@ export function HistoryModal({ open, onCloseAction, history, currentId, onSelect
                       {entry.password}
                     </span>
                   </button>
-                  <Button variant="ghost" size="icon-sm" onClick={() => handleCopy(entry)} title="Copy">
+                  <Button variant="ghost" size="icon-lg" onClick={() => handleCopy(entry)} title="Copy">
                     <span className="relative flex size-4 items-center justify-center">
-                      <Copy size={14} className={`absolute transition-all duration-200 ${isCopied ? 'scale-50 opacity-0' : 'scale-100 opacity-100'}`} />
-                      <Check size={14} className={`absolute text-accent transition-all duration-200 ${isCopied ? 'scale-100 opacity-100' : 'scale-50 opacity-0'}`} strokeWidth={3} />
+                      <Copy size={14} className={`absolute transition-all duration-300 ${isCopied ? 'scale-0' : 'scale-100'}`} />
+                      <Check size={14} className={`absolute text-accent transition-all duration-300 ${isCopied ? 'scale-100' : 'scale-0'}`} strokeWidth={3} />
                     </span>
                   </Button>
                 </li>

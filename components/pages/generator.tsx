@@ -178,7 +178,10 @@ export function Generator() {
     return () => window.removeEventListener('keydown', onKey)
   }, [commit, handleCopy, historyOpen])
 
-  const strength = useMemo(() => getStrength(length, options), [length, options])
+  const strength = useMemo(
+    () => getStrength(length, options, password),
+    [length, options, password],
+  )
   const progress = ((length - MIN_LENGTH) / (MAX_LENGTH - MIN_LENGTH)) * 100
 
   return (
