@@ -1,6 +1,7 @@
 'use client'
 
-import { Check } from 'lucide-react'
+import { IconCheck } from "@tabler/icons-react"
+
 
 type Props = {
   label: string
@@ -26,7 +27,7 @@ export function OptionCheckbox({ label, checked, onChangeAction, disabled }: Pro
           : 'border-white/20 bg-transparent group-hover:border-white/40'
           }`}
       >
-        <Check
+        <IconCheck
           size={14}
           className={`text-white transition-all duration-300 ${checked ? 'scale-100' : 'scale-0'
             }`}

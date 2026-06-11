@@ -1,13 +1,6 @@
 'use client'
 
-import {
-  Check,
-  ChevronLeft,
-  ChevronRight,
-  Clock,
-  Copy,
-  RotateCw,
-} from 'lucide-react'
+import { IconCheck, IconChevronLeft, IconChevronRight, IconClock, IconCopy, IconRotate } from '@tabler/icons-react';
 import { useState, useEffect } from 'react'
 import { Button } from '../ui/button'
 
@@ -62,25 +55,25 @@ export function PasswordDisplay({
 
         <div className="flex items-center gap-1">
           <Button variant="ghost" size="icon-lg" onClick={onPrevAction} disabled={!canPrev} className="group" aria-label="Previous">
-            <ChevronLeft size={18} className='group-active:-translate-x-0.5 transition-all duration-200' />
+            <IconChevronLeft size={18} className='group-active:-translate-x-0.5 transition-all duration-200' />
           </Button>
           <Button variant="ghost" size="icon-lg" onClick={onNextAction} disabled={!canNext} className="group" aria-label="Next">
-            <ChevronRight size={18} className='group-active:translate-x-0.5 transition-all duration-200' />
+            <IconChevronRight size={18} className='group-active:translate-x-0.5 transition-all duration-200' />
           </Button>
 
           <span className="mx-1 h-5 w-px bg-border" aria-hidden />
 
           <Button variant="ghost" size="lg" onClick={onOpenHistoryAction} className="group" aria-label="Open history">
-            <Clock size={18} className="group-hover:-rotate-360 transition-all duration-300" />
+            <IconClock size={18} className="group-hover:-rotate-360 transition-all duration-300" />
             <span className="hidden md:inline group-hover:text-accent">History</span>
           </Button>
           <Button variant="ghost" size="icon-lg" onClick={onRegenerateAction} className="group" aria-label="Regenerate">
-            <RotateCw size={18} className="transition-all duration-300 group-active:rotate-90" />
+            <IconRotate size={18} className="transition-all rotate-180 duration-300 group-active:rotate-90" />
           </Button>
           <Button variant="ghost" size="lg" onClick={onCopyAction} aria-label="Copy password">
             <span className="relative flex size-4 items-center justify-center">
-              <Copy size={18} className={`absolute transition-all duration-300 ${copied ? 'scale-0' : 'scale-100'}`} />
-              <Check size={18} className={`absolute text-accent transition-all duration-300 ${copied ? 'scale-100' : 'scale-0'}`} />
+              <IconCopy size={18} className={`absolute transition-all duration-300 ${copied ? 'scale-0' : 'scale-100'}`} />
+              <IconCheck size={18} className={`absolute text-accent transition-all duration-300 ${copied ? 'scale-100' : 'scale-0'}`} />
             </span>
             <span className="hidden sm:inline">{copied ? 'Copied' : 'Copy'}</span>
           </Button>

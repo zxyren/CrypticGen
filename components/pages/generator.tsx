@@ -1,7 +1,6 @@
 'use client'
 
 import { useCallback, useEffect, useMemo, useRef, useState } from 'react'
-import { ArrowRight } from 'lucide-react'
 import {
   generatePassword,
   getStrength,
@@ -11,6 +10,7 @@ import { PasswordDisplay } from './password-display'
 import { StrengthIndicator } from './strength-indicator'
 import { OptionCheckbox } from './option-checkbox'
 import { HistoryModal, type HistoryEntry } from './history-modal'
+import { IconArrowRight } from '@tabler/icons-react';
 
 const MIN_LENGTH = 8
 const MAX_LENGTH = 64
@@ -251,12 +251,12 @@ export function Generator() {
       <button
         type="button"
         onClick={commit}
-        className="group flex w-full cursor-pointer items-center justify-between gap-4 rounded-2xl bg-foreground px-6 py-6 text-left text-background transition-all duration-300 hover:bg-accent hover:text-white sm:px-10 sm:py-8"
+        className="group flex w-full cursor-pointer items-center justify-between gap-4 rounded-2xl bg-foreground outline-none ring-0 px-6 py-6 text-left text-background transition-all duration-300 hover:bg-accent hover:text-white sm:px-10 sm:py-8"
       >
         <span className="text-xl font-extrabold tracking-tight sm:text-3xl md:text-4xl">
           GENERATE PASSWORD
         </span>
-        <ArrowRight className="size-6 shrink-0 transition-transform duration-300 group-hover:translate-x-2 sm:size-8" />
+        <IconArrowRight className="shrink-0 size-6 transition-transform duration-300 group-hover:translate-x-2 sm:size-10" />
       </button>
 
       <HistoryModal

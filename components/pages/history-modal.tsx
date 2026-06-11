@@ -1,8 +1,8 @@
 'use client'
 
 import { useCallback, useEffect, useState } from 'react'
-import { Check, Copy, Trash2, X } from 'lucide-react'
 import { Button } from '../ui/button'
+import { IconCheck, IconCopy, IconTrash, IconX } from '@tabler/icons-react';
 
 export type HistoryEntry = { id: number; password: string }
 
@@ -55,11 +55,11 @@ export function HistoryModal({ open, onCloseAction, history, currentId, onSelect
           <div className="flex items-center gap-1">
             {history.length > 0 && (
               <Button variant="danger" size="icon-lg" onClick={onClearAction} title="Clear history">
-                <Trash2 size={16} />
+                <IconTrash size={18} />
               </Button>
             )}
             <Button variant="ghost" size="icon-lg" onClick={onCloseAction} title="Close">
-              <X size={16} />
+              <IconX size={18} />
             </Button>
           </div>
         </div>
@@ -88,8 +88,8 @@ export function HistoryModal({ open, onCloseAction, history, currentId, onSelect
                   </button>
                   <Button variant="ghost" size="icon-lg" onClick={() => handleCopy(entry)}>
                     <span className="relative flex size-4 items-center justify-center">
-                      <Copy size={14} className={`absolute transition-all duration-300 ${isCopied ? 'scale-0' : 'scale-100'}`} />
-                      <Check size={14} className={`absolute text-accent transition-all duration-300 ${isCopied ? 'scale-100' : 'scale-0'}`} strokeWidth={3} />
+                      <IconCopy size={16} className={`absolute transition-all duration-300 ${isCopied ? 'scale-0' : 'scale-100'}`} />
+                      <IconCheck size={14} className={`absolute text-accent transition-all duration-300 ${isCopied ? 'scale-100' : 'scale-0'}`} strokeWidth={3} />
                     </span>
                   </Button>
                 </li>
