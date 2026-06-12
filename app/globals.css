@@ -99,7 +99,7 @@ input[type='range'].ui-slider::-webkit-slider-runnable-track {
   height: 2px;
   border-radius: 9999px;
   background: linear-gradient(to right,
-      var(--accent) var(--range-progress, 50%),
+      var(--foreground) var(--range-progress, 50%),
       rgba(255, 255, 255, 0.12) var(--range-progress, 50%));
 }
 
@@ -112,13 +112,13 @@ input[type='range'].ui-slider::-moz-range-track {
 input[type='range'].ui-slider::-moz-range-progress {
   height: 2px;
   border-radius: 9999px;
-  background: var(--accent);
+  background: var(--foreground);
 }
 
 
 input[type='range'].ui-slider:hover::-webkit-slider-thumb,
 input[type='range'].ui-slider:focus-visible::-webkit-slider-thumb {
-  box-shadow: 0 0 0 8px rgba(79, 124, 255, 0.15);
+  box-shadow: 0 0 0 8px rgba(225, 255, 255, 0.15);
 }
 
 input[type='range'].ui-slider:active::-webkit-slider-thumb {
@@ -133,8 +133,8 @@ input[type='range'].ui-slider::-webkit-slider-thumb {
   width: 20px;
   border-radius: 9999px;
   background: var(--background);
-  border: var(--accent) 2px solid;
-  box-shadow: 0 0 0 0 rgba(79, 124, 255, 0.4);
+  border: var(--foreground) 2px solid;
+  box-shadow: 0 0 0 0 rgba(79, 124, 255, 0);
   transition: box-shadow 0.2s ease, transform 0.2s ease;
 }
 
@@ -143,12 +143,12 @@ input[type='range'].ui-slider::-moz-range-thumb {
   width: 20px;
   border-radius: 9999px;
   background: var(--background);
-  border: var(--accent) 2px solid;
+  border: var(--foreground) 2px solid;
   transition: box-shadow 0.2s ease;
 }
 
 input[type='range'].ui-slider:hover::-moz-range-thumb {
-  box-shadow: 0 0 0 8px rgba(79, 124, 255, 0.15);
+  box-shadow: 0 0 0 8px rgba(225, 255, 255, 0.15);
 }
 
 @keyframes ui-fade-up {

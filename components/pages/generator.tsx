@@ -208,7 +208,7 @@ export function Generator() {
       <section className="grid grid-cols-1 gap-12 md:grid-cols-2 md:gap-16">
         <div className="flex flex-col gap-6">
           <div className="flex items-end justify-between">
-            <span className="uppercase tracking-wide text-muted-foreground">
+            <span className="uppercase font-semibold text-foreground">
               Length
             </span>
             <span className="text-sm font-bold tabular-nums text-foreground sm:text-lg md:text-xl">
@@ -232,7 +232,7 @@ export function Generator() {
         </div>
 
         <div className="flex flex-col gap-3">
-          <span className="mb-1 uppercase tracking-wide text-muted-foreground">
+          <span className="uppercase font-semibold text-foreground">
             Characters
           </span>
           <div className="grid grid-cols-2 gap-x-6">

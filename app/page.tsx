@@ -26,7 +26,7 @@ export default function Page() {
 
         {/* Footer */}
         <footer className="mt-20 flex flex-col gap-2 border-t border-border pt-8 sm:mt-24 sm:flex-row sm:items-center sm:justify-between">
-          <p className="text-sm text-muted-foreground">
+          <p className="text-muted-foreground">
             Generated locally. Privacy first.
           </p>
           <p className="text-sm text-muted-foreground">
